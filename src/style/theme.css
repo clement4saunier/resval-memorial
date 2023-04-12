@@ -1,0 +1,145 @@
+:root {
+    --color-planet-highlight: #e9dbcb;
+    --color-planet-light: #F7D1A3;
+    --color-planet-dark: #F7D1A3;
+    --color-planet: #F7D1A3;
+
+    --color-header-background: #0D9DE7;
+    --color-header-light: #5fb7e2;
+    --color-header-highlight: #b5d6e7;
+    --color-header-dark: #1d4153;
+    --color-header-border: #0D0D0D;
+
+    --color-content-background: #0D0D0D;
+    --color-content-text: #436e80;
+    --color-content-title: #3A98B1;
+
+    --space-s: 2px;
+    --space-m: 8px;
+    --space-l: 12px;
+    --space-xl: 48px;
+
+    --border: 1px solid var(--color-content-title)
+}
+
+.zlm {
+    --color-planet-highlight: #b5d6e7;
+    --color-planet-light: #6da2bd;
+    --color-planet-dark: #152025;
+    --color-planet-shadow: #171d20;
+    --color-planet: #2e80a8;
+
+    --color-header-background: #0d1113;
+    --color-header-light: #12171a;
+    --color-header-highlight: #b5d6e7;
+    --color-header-dark: #08171f;
+    --color-header-border: #2e80a8;
+
+    --color-content-background: #0D0D0D;
+    --color-content-text: #436e80;
+    --color-content-title: #3A98B1;
+
+    --space-s: 2px;
+    --space-m: 8px;
+    --space-l: 12px;
+    --space-xl: 48px;
+
+    --border: 1px solid var(--color-content-title)
+}
+
+.aznvr {
+    --color-planet-highlight: #e9dbcb;
+    --color-planet-light: #63B4CC;
+    --color-planet-dark: #0a2229;
+    --color-planet-shadow: #e9dbcb;
+    --color-planet: #3f7c8f;
+
+    --color-header-background: #D74A41;
+    --color-header-light: #e9dbcb;
+    --color-header-highlight: #e9dbcb;
+    --color-header-dark: #1E060B;
+    --color-header-border: #1E060B;
+
+    --color-content-background: #14070F;
+    --color-content-text: #5193a7;
+    --color-content-title: #63B4CC;
+
+    --space-s: 2px;
+    --space-m: 8px;
+    --space-l: 12px;
+    --space-xl: 48px;
+
+    --border: 1px solid var(--color-content-title)
+}
+
+.noire {
+    --color-planet-highlight: #e9dbcb;
+    --color-planet-light: #F7D1A3;
+    --color-planet-dark: #F7D1A3;
+    --color-planet: #F7D1A3;
+    
+    --color-header-background: #EB8037;
+    --color-header-light: #E6B95E;
+    --color-header-highlight: #e6d0a4;
+    --color-header-dark: #51271F;
+    --color-header-border: #530e11;
+
+    --color-content-background: #0e0907;
+    --color-content-text: #db8348;
+    --color-content-title: #EB8037;
+
+    --space-s: 2px;
+    --space-m: 8px;
+    --space-l: 12px;
+    --space-xl: 48px;
+
+    --border: 1px solid var(--color-content-title)
+}
+
+.nebuleuse {
+    --color-planet-highlight: #e9dbcb;
+    --color-planet-light: #F7D1A3;
+    --color-planet-dark: #F7D1A3;
+    --color-planet: #F7D1A3;
+    
+    --color-header-background: #A23340;
+    --color-header-light: #F4C0AA;
+    --color-header-highlight: #f3d9ce;
+    --color-header-dark: #271213;
+    --color-header-border: #530e11;
+
+    --color-content-background: #0C0F0E;
+    --color-content-text: #971C23;
+    --color-content-title: #971C23;
+
+    --space-s: 2px;
+    --space-m: 8px;
+    --space-l: 12px;
+    --space-xl: 48px;
+
+    --border: 1px solid var(--color-content-title)
+}
+
+.mustafar {
+    --color-planet-highlight: #e9dbcb;
+    --color-planet-light: #F7D1A3;
+    --color-planet-dark: #F7D1A3;
+    --color-planet: #F7D1A3;
+    
+    --color-header-background: #8e7f94;
+    --color-header-light: #b485ca;
+    --color-header-highlight: #c6afcf;
+    --color-header-dark: #85474a;
+    --color-header-border: #260535;
+
+    --color-content-background: #0C0F0E;
+    --color-content-text: #971C23;
+    --color-content-title: #971C23;
+
+    --space-s: 2px;
+    --space-m: 8px;
+    --space-l: 12px;
+    --space-xl: 48px;
+
+    --border: 1px solid var(--color-content-title)
+}

@@ -1,0 +1,151 @@
+.container {
+  width: 100%;
+  height: 100%;
+  color: #b92923;
+
+  background: radial-gradient(
+    circle at 50vw 100%,
+    var(--color-header-background) 0vh,
+    var(--color-header-light) 67vh,
+    var(--color-header-background) 90vh,
+    var(--color-header-dark) 140vh
+  );
+
+  display: grid;
+  grid-template-areas:
+    "top-left top-center top-right"
+    "mid-left mid-center mid-right"
+    "bot-left bot-center bot-right";
+  grid-template-columns: var(--space-xl) auto var(--space-xl);
+  grid-template-rows: var(--space-xl) auto var(--space-xl);
+
+  --border: 1px solid var(--color-header-border);
+  --color-content-title: var(--color-header-border);
+  --color-content-text: var(--color-header-border);
+}
+
+
+.container button, .container .card, .container textarea {
+  backdrop-filter: blur(64px);
+}
+
+.container > * {
+  padding: var(--space-m);
+  gap: var(--space-m);
+}
+
+.connectWallet {
+  grid-row: top-center;
+  grid-column: top-right / top-center;
+  display: flex;
+  justify-content: right;
+}
+
+.leftBottomBar {
+  grid-row: mid-left;
+  grid-column: mid-left / bot-left;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 0px;
+}
+
+.title {
+  grid-row: top-center;
+  grid-column: top-left / top-center;
+  display: flex;
+  justify-content: left;
+}
+
+.themes {
+  grid-row: bot-center;
+  grid-column: bot-left / bot-center;
+  display: flex;
+  justify-content: left;
+}
+
+.noise {
+  /* position: absolute; */
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  grid-column: top-left  / top-right;
+  grid-row: top-center / bot-center;
+  content: "";
+  z-index: 2;
+  /* you can control opacity of noise  */
+  opacity: .02;  
+  pointer-events: none;
+  background: url('../../assets/noise.jpg');
+
+}
+
+.luv {
+  grid-row: mid-center / bot-center;
+  grid-column: bot-center;
+  display: flex;
+  padding: 0px;
+  justify-content: end;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.luv  > * {
+  max-height: 6em;
+  width: auto;
+  /* height: 3em;
+  width: 3em; */
+  /* background-color: var(--color-content-background); */
+}
+
+.luv img {
+  
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.planet {
+  grid-area: mid-center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xl);
+  margin-bottom: 30vh;
+  --offset: 0.01;
+}
+
+.sphere {
+  border-radius: 100vmax;
+  height: 30vh;
+  width: 30vh;
+  background: radial-gradient(
+    at 40% 40%,
+    var(--color-planet-highlight),
+    var(--color-planet-light),
+    var(--color-planet),
+    var(--color-planet-dark)
+  );
+  box-shadow: 0px 0px 48px 48px var(--color-planet-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition-duration: 100ms;
+  user-select: none;
+}
+
+.sphere:hover {
+  transform: scale(calc(1 + var(--offset)));
+}
+
+.sphere:active {
+  transform: scale(calc(1 - var(--offset)));
+}
+
+.chainInfo {
+  grid-row: bot-center;
+  grid-column: bot-center / bot-right;
+  display: flex;
+  justify-content: right;
+}

@@ -1,0 +1,4 @@
+section {
+  width: min(calc(100%), 800px);
+  margin-inline: auto;
+}

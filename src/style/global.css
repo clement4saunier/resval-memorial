@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Space Grotesk";
+  src: local("Space Grotesk"),
+    url("../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Space Grotesk Light";
+  src: local("Space Grotesk Light"),
+    url("../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: local("Space Mono"),
+    url("../assets/fonts/Space_Mono/SpaceMono-Regular.ttf") format("truetype");
+}
+
+* {
+  font-family: "Space Grotesk Light";
+}
+
+body {
+  background-color: var(--color-content-background);
+  color: var(--color-content-text);
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--color-content-title);
+  font-family: 'Space Grotesk';
+}
+
+p {
+  color: var(--color-content-text);
+}
+
+button {
+  font-family: 'Space Grotesk';
+}
+
+textarea {
+  outline: none;
+  border: var(--border);
+  color: var(--color-content-title);
+  background-color: transparent;
+}
+
+
+button, .card {
+  background-color: transparent;
+  border: var(--border);
+  color: var(--color-content-title);
+  gap: 1ch;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-m);
+  padding-inline: var(--space-l);
+}
