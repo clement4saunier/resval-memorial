@@ -121,20 +121,21 @@
 }
 
 .mustafar {
-    --color-planet-highlight: #e9dbcb;
-    --color-planet-light: #F7D1A3;
-    --color-planet-dark: #F7D1A3;
-    --color-planet: #F7D1A3;
-    
-    --color-header-background: #8e7f94;
-    --color-header-light: #b485ca;
-    --color-header-highlight: #c6afcf;
-    --color-header-dark: #85474a;
-    --color-header-border: #260535;
+    --color-planet-highlight: #fdebb8;
+    --color-planet-light: #ffda72;
+    --color-planet-dark: #152025;
+    --color-planet-shadow: #171d20;
+    --color-planet: #FFCB3E;
 
-    --color-content-background: #0C0F0E;
-    --color-content-text: #971C23;
-    --color-content-title: #971C23;
+    --color-header-background: #13120d;
+    --color-header-light: #1a1912;
+    --color-header-highlight: #b5d6e7;
+    --color-header-dark: #1f1708;
+    --color-header-border: #FFCB3E;
+
+    --color-content-background: #0D0D0D;
+    --color-content-text: #c4a244;
+    --color-content-title: #FFCB3E;
 
     --space-s: 2px;
     --space-m: 8px;

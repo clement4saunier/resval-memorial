@@ -6,6 +6,7 @@ import silhouette from '../../assets/silhouette.svg';
 import ThemeTabs from './decorations/ThemeTabs';
 import Divider from './decorations/Divider';
 import Icon from '../Icon';
+import Scene from '../Scene';
 
 function LavaHeader() {
   const { cycleTheme, theme } = useContext(ThemeContext);
@@ -56,9 +57,10 @@ function LavaHeader() {
         </div>
       </div>
       <div class={styles.planet}>
-        <div class={styles.sphere} onClick={onPlanetClick}>
+        {/* <div class={styles.sphere} onClick={onPlanetClick}>
           <Icon material={playing() ? "play_arrow" : "pause"} style={{ 'font-size': "48px", color: "var(--color-header-light)" }} />
-        </div>
+        </div> */}
+        <Scene/>
         <div class=''>
           Pour l'éternité.
           <div style={{ height: "var(--space-m)" }} />

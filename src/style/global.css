@@ -16,8 +16,14 @@
     url("../assets/fonts/Space_Mono/SpaceMono-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Bavicka";
+  src: url("../assets/fonts/BavickaRegular.woff2") format("woff2"),
+    url("../assets/fonts/BavickaRegular.woff") format("woff");
+}
+
 * {
-  font-family: "Space Grotesk Light";
+  font-family: "Bavicka";
 }
 
 body {
@@ -25,9 +31,13 @@ body {
   color: var(--color-content-text);
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: var(--color-content-title);
-  font-family: 'Space Grotesk';
+  font-family: "Bavicka";
 }
 
 p {
@@ -35,7 +45,7 @@ p {
 }
 
 button {
-  font-family: 'Space Grotesk';
+  font-family: "Bavicka";
 }
 
 textarea {
@@ -45,8 +55,8 @@ textarea {
   background-color: transparent;
 }
 
-
-button, .card {
+button,
+.card {
   background-color: transparent;
   border: var(--border);
   color: var(--color-content-title);
