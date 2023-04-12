@@ -31,11 +31,11 @@ export default function Scene() {
 
             uniforms['map'].value = imgTexture;
 
-            uniforms['diffuse'].value = new THREE.Vector3(1.0, 1.0, 0);
-            uniforms['shininess'].value = 150;
+            uniforms['diffuse'].value = new THREE.Vector3(.8, .7, 0);
+            uniforms['shininess'].value = 50;
 
             uniforms['thicknessMap'].value = thicknessTexture;
-            uniforms['thicknessColor'].value = new THREE.Vector3(0.8, 0.65, .1);
+            uniforms['thicknessColor'].value = new THREE.Vector3(0.8, .6, .25);
             uniforms['thicknessDistortion'].value = 0.2;
             uniforms['thicknessAmbient'].value = 1.5;
             uniforms['thicknessAttenuation'].value = 1;
@@ -61,7 +61,7 @@ export default function Scene() {
 
             });
 
-            initGUI(uniforms);
+            // initGUI(uniforms);
             return material;
         }
 
@@ -130,18 +130,18 @@ export default function Scene() {
 
             //lights
 
-            light1 = new THREE.PointLight(0xffaa00, 1, 100);
+            light1 = new THREE.PointLight(0xffffff, 1, 100);
             light1.position.x = 0;
             light1.position.y = 0;
-            light1.position.z = -30;
+            light1.position.z = -50;
             light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             scene.add(light1);
 
-            light2 = new THREE.PointLight(0xffaa00, 1, 50);
+            light2 = new THREE.PointLight(0xffaa00, .3, 100);
             light2.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             scene.add(light2);
 
-            light3 = new THREE.PointLight(0xffaa00, 0.5, 50);
+            light3 = new THREE.PointLight(0xffaa00, 0.3, 100);
             light3.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             scene.add(light3);
 
@@ -160,8 +160,8 @@ export default function Scene() {
 
             //stats
 
-            stats = new Stats();
-            document.body.appendChild(stats.dom);
+            // stats = new Stats();
+            // document.body.appendChild(stats.dom);
 
             initMaterial();
 
@@ -184,7 +184,7 @@ export default function Scene() {
             requestAnimationFrame(animate);
 
             render();
-            stats.update();
+            // stats.update();
 
         }
 
@@ -200,11 +200,11 @@ export default function Scene() {
             // light1.position.z = Math.cos(time * 0.3) * 30;
 
             light2.position.x = Math.cos(time * 10) * 30;
-            light2.position.y = Math.sin(time * 2) * 20;
+            light2.position.y = Math.sin(time * 2) * 20 - 10;
             light2.position.z = Math.sin(time * 10) * 30;
 
             light3.position.x = Math.cos(time * 8) * 30;
-            light3.position.y = Math.sin(time * 4) * 20;
+            light3.position.y = Math.sin(time * 4) * 10 -10;
             light3.position.z = Math.sin(time * 8) * 35;
 
             light4.position.x = Math.sin(time * 0.3) * 30;
