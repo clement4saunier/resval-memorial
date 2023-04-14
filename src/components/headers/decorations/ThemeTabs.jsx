@@ -4,8 +4,6 @@ import styles from './ThemeTabs.module.css';
 function ThemeTabs() {
     const { themes, themeIndex } = useTheme();
 
-    console.log(themes);
-
     return (
         <div class={["card", styles.container].join(" ")}>
             {themes.map((_, i) => <div class={[styles.round, i === themeIndex() ? styles.selected : ""].join(" ")}></div>)}

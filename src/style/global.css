@@ -23,7 +23,7 @@
 }
 
 * {
-  font-family: "Bavicka";
+  font-family: "Space Grotesk Light";
 }
 
 body {
@@ -37,7 +37,7 @@ h3,
 h4,
 h5 {
   color: var(--color-content-title);
-  font-family: "Bavicka";
+  font-family: "Space Grotesk";
 }
 
 p {
@@ -45,7 +45,7 @@ p {
 }
 
 button {
-  font-family: "Bavicka";
+  font-family: "Space Grotesk";
 }
 
 textarea {

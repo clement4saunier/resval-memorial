@@ -3,7 +3,7 @@ import { createSignal, createContext, useContext, createMemo } from "solid-js";
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-    const themes = ["aznvr", "zlm", "noire", "nebuleuse", "mustafar"];
+    const themes = ["mustafar", "zlm", "noire", "nebuleuse"];
     const [themeIndex, setThemeIndex] = createSignal(0);
     const theme = createMemo(() => themes[themeIndex()]);
 

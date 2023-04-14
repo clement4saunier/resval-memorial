@@ -7,7 +7,7 @@ import Icon from '../components/Icon';
 
 function Home() {
 
-  const themes = ["aznvr", "zlm", "noire", "nebuleuse", "mustafar"];
+  const themes = ["mustafar", "aznvr", "zlm", "noire", "nebuleuse"];
   const [themeIndex, setThemeIndex] = createSignal(0);
   const theme = createMemo(() => themes[themeIndex()]);
 
