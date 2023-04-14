@@ -5,6 +5,7 @@ import Stats from 'three/addons/libs/stats.module.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { SubsurfaceScatteringShader } from 'three/addons/shaders/SubsurfaceScatteringShader.js';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+
 export default function Scene() {
     let canvasRef;
 
@@ -21,9 +22,11 @@ export default function Scene() {
 
         function initMaterial() {
             const loader = new THREE.TextureLoader();
-            const imgTexture = loader.load('src/assets/white.jpg');
 
-            const thicknessTexture = loader.load('src/assets/thickness.jpg');
+            const imgTexture = loader.load('/white.jpg');
+            const thicknessTexture = loader.load('/thickness.jpg');
+            const normalTexture = loader.load('/normal.jpg');
+
             imgTexture.wrapS = imgTexture.wrapT = THREE.RepeatWrapping;
 
             const shader = SubsurfaceScatteringShader;
@@ -32,26 +35,30 @@ export default function Scene() {
             uniforms['map'].value = imgTexture;
 
             uniforms['diffuse'].value = new THREE.Vector3(.8, .7, 0);
-            uniforms['shininess'].value = 50;
+            uniforms['shininess'].value = 400;
 
             uniforms['thicknessMap'].value = thicknessTexture;
+            uniforms['normalMap'].value = normalTexture;
+            uniforms['normalScale'].value = new THREE.Vector2( 1, 1);
             uniforms['thicknessColor'].value = new THREE.Vector3(0.8, .6, .25);
             uniforms['thicknessDistortion'].value = 0.2;
-            uniforms['thicknessAmbient'].value = 1.5;
-            uniforms['thicknessAttenuation'].value = 1;
-            uniforms['thicknessPower'].value = 4;
-            uniforms['thicknessScale'].value = 2.0;
+            uniforms['thicknessAmbient'].value = 1.4;
+            uniforms['thicknessAttenuation'].value = 1.2;
+            uniforms['thicknessPower'].value = 20;
+            uniforms['thicknessScale'].value = 1.0;
 
             const material = new THREE.ShaderMaterial({
                 uniforms: uniforms,
                 vertexShader: shader.vertexShader,
                 fragmentShader: shader.fragmentShader,
-                lights: true
+                lights: true,
             });
             material.extensions.derivatives = true;
 
+            console.log(material.uniforms);
+
             const objLoader = new OBJLoader();
-            objLoader.load('/src/assets/models/crystal.obj', function (obj) {
+            objLoader.load('/models/crystal.obj', function (obj) {
 
                 object = obj;
                 object.scale.multiplyScalar(20);
@@ -155,6 +162,7 @@ export default function Scene() {
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(canvasRef.clientWidth, canvasRef.clientHeight);
             canvasRef.appendChild(renderer.domElement);
+            window.addEventListener('resize', onWindowResize);
 
             // document.body.appendChild(renderer.domElement);
 
@@ -165,7 +173,6 @@ export default function Scene() {
 
             initMaterial();
 
-            window.addEventListener('resize', onWindowResize);
 
         }
 
@@ -173,10 +180,9 @@ export default function Scene() {
             const aspectRatio = canvasRef.clientWidth / canvasRef.clientHeight;
             camera.left = -aspectRatio;
             camera.right = aspectRatio;
+            camera.aspect = aspectRatio;
             camera.updateProjectionMatrix();
-
             renderer.setSize(canvasRef.clientWidth, canvasRef.clientHeight);
-
         }
 
         function animate() {
@@ -184,7 +190,6 @@ export default function Scene() {
             requestAnimationFrame(animate);
 
             render();
-            // stats.update();
 
         }
 
@@ -194,6 +199,7 @@ export default function Scene() {
             const delta = clock.getDelta();
 
             if (object) object.rotation.y -= 0.1 * delta;
+            if (object) object.position.y = Math.sin(time * 2) * 1 - 13;
 
             // light1.position.x = Math.sin(time * 0.1) * 30;
             // light1.position.y = Math.cos(time * 0.5) * 30;
@@ -204,7 +210,7 @@ export default function Scene() {
             light2.position.z = Math.sin(time * 10) * 30;
 
             light3.position.x = Math.cos(time * 8) * 30;
-            light3.position.y = Math.sin(time * 4) * 10 -10;
+            light3.position.y = Math.sin(time * 4) * 10 - 10;
             light3.position.z = Math.sin(time * 8) * 35;
 
             light4.position.x = Math.sin(time * 0.3) * 30;
