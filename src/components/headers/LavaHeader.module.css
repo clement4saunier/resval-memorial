@@ -23,6 +23,21 @@
   --border: 1px solid var(--color-header-border);
   --color-content-title: var(--color-header-border);
   --color-content-text: var(--color-header-border);
+
+  position: relative;
+}
+
+.container::before {
+  content: " ";
+  border: 1px solid red;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../../assets/stars.png");
+  background-size: cover;
 }
 
 

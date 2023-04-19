@@ -127,11 +127,11 @@
     --color-planet-shadow: #171d20;
     --color-planet: #FFCB3E;
 
-    --color-header-background: #13120d;
-    --color-header-light: #1a1912;
+    --color-header-background: #13120dfb;
+    --color-header-light: #1d1c14f8;
     --color-header-highlight: #b5d6e7;
     --color-header-dark: #1f1708;
-    --color-header-border: #FFCB3E;
+    --color-header-border: rgb(255, 203, 62);
 
     --color-content-background: #0D0D0D;
     --color-content-text: #c4a244;

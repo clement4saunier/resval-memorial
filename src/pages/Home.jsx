@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, themes, themeIndex, cycleTheme }}>
-      <div class={theme()} style={{ "background-color": "var(--color-content-background)" }}>
+      <div class={theme()}>
         <div class={styles.App}>
           <header>
             <LavaHeader />

@@ -7,13 +7,13 @@ import { SubsurfaceScatteringShader } from 'three/addons/shaders/SubsurfaceScatt
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 
 export default function Scene() {
-    let canvasRef;
+    let canvasRef, camera, scene, renderer,
+        light1, light2, light3, light4,
+        object;
 
     const clock = new THREE.Clock();
-    let camera, scene, renderer,
-        light1, light2, light3, light4,
-        object, stats;
 
+    const crystalColor = new THREE.Vector3(255 / 255, 203 / 255, 62 / 255);
 
 
     setTimeout(() => {
@@ -25,7 +25,6 @@ export default function Scene() {
 
             const imgTexture = loader.load('/white.jpg');
             const thicknessTexture = loader.load('/thickness.jpg');
-            const normalTexture = loader.load('/normal.jpg');
 
             imgTexture.wrapS = imgTexture.wrapT = THREE.RepeatWrapping;
 
@@ -34,17 +33,14 @@ export default function Scene() {
 
             uniforms['map'].value = imgTexture;
 
-            uniforms['diffuse'].value = new THREE.Vector3(.8, .7, 0);
             uniforms['shininess'].value = 400;
 
             uniforms['thicknessMap'].value = thicknessTexture;
-            uniforms['normalMap'].value = normalTexture;
-            uniforms['normalScale'].value = new THREE.Vector2( 1, 1);
-            uniforms['thicknessColor'].value = new THREE.Vector3(0.8, .6, .25);
-            uniforms['thicknessDistortion'].value = 0.2;
-            uniforms['thicknessAmbient'].value = 1.4;
-            uniforms['thicknessAttenuation'].value = 1.2;
-            uniforms['thicknessPower'].value = 20;
+            uniforms['thicknessColor'].value = crystalColor;
+            uniforms['thicknessDistortion'].value = 0.3;
+            uniforms['thicknessAmbient'].value = 20;
+            uniforms['thicknessAttenuation'].value = 0.1;
+            uniforms['thicknessPower'].value = 1;
             uniforms['thicknessScale'].value = 1.0;
 
             const material = new THREE.ShaderMaterial({
@@ -54,8 +50,6 @@ export default function Scene() {
                 lights: true,
             });
             material.extensions.derivatives = true;
-
-            console.log(material.uniforms);
 
             const objLoader = new OBJLoader();
             objLoader.load('/models/crystal.obj', function (obj) {
@@ -72,56 +66,6 @@ export default function Scene() {
             return material;
         }
 
-        function initGUI(uniforms) {
-
-            const gui = new GUI({ title: 'Thickness Control' });
-
-            const ThicknessControls = function () {
-
-                this.distortion = uniforms['thicknessDistortion'].value;
-                this.ambient = uniforms['thicknessAmbient'].value;
-                this.attenuation = uniforms['thicknessAttenuation'].value;
-                this.power = uniforms['thicknessPower'].value;
-                this.scale = uniforms['thicknessScale'].value;
-
-            };
-
-            const thicknessControls = new ThicknessControls();
-
-            gui.add(thicknessControls, 'distortion').min(0.01).max(1).step(0.01).onChange(function () {
-
-                uniforms['thicknessDistortion'].value = thicknessControls.distortion;
-                console.log('distortion');
-
-            });
-
-            gui.add(thicknessControls, 'ambient').min(0.01).max(5.0).step(0.05).onChange(function () {
-
-                uniforms['thicknessAmbient'].value = thicknessControls.ambient;
-
-            });
-
-            gui.add(thicknessControls, 'attenuation').min(0.01).max(5.0).step(0.05).onChange(function () {
-
-                uniforms['thicknessAttenuation'].value = thicknessControls.attenuation;
-
-            });
-
-            gui.add(thicknessControls, 'power').min(0.01).max(16.0).step(0.1).onChange(function () {
-
-                uniforms['thicknessPower'].value = thicknessControls.power;
-
-            });
-
-            gui.add(thicknessControls, 'scale').min(0.01).max(50.0).step(0.1).onChange(function () {
-
-                uniforms['thicknessScale'].value = thicknessControls.scale;
-
-            });
-
-        }
-
-
         function init() {
 
             camera = new THREE.PerspectiveCamera(50, canvasRef.clientWidth / canvasRef.clientHeight, 1, 1000);
@@ -137,22 +81,22 @@ export default function Scene() {
 
             //lights
 
-            light1 = new THREE.PointLight(0xffffff, 1, 100);
+            light1 = new THREE.PointLight(0xffffff, 0.4, 100);
             light1.position.x = 0;
             light1.position.y = 0;
             light1.position.z = -50;
             light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             scene.add(light1);
 
-            light2 = new THREE.PointLight(0xffaa00, .3, 100);
+            light2 = new THREE.PointLight(0xffffff, .2, 100);
             light2.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             scene.add(light2);
 
-            light3 = new THREE.PointLight(0xffaa00, 0.3, 100);
+            light3 = new THREE.PointLight(0xffffff, 0.1, 100);
             light3.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             scene.add(light3);
 
-            light4 = new THREE.PointLight(0xffaa00, 1.5, 50);
+            light4 = new THREE.PointLight(0xffffff, 1.5, 50);
             light4.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
             // scene.add(light4);
 
