@@ -1,34 +1,54 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "../lib/Base64.sol";
 
-contract Lock {
-    uint public unlockTime;
-    address payable public owner;
+contract Epitath is ERC721 {
+    mapping(uint256 => string) messages;
 
-    event Withdrawal(uint amount, uint when);
+    constructor(
+        string memory name,
+        string memory symbol
+    ) ERC721(name, symbol) {}
 
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
+    function engrave(
+        string memory _message,
+        address to
+    ) public returns (uint256 tokenId) {
+        tokenId = uint256(keccak256(bytes(_message)));
 
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
+        messages[tokenId] = _message;
+        _safeMint(to, tokenId);
     }
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
+    function message(uint256 id) public view returns (string memory) {
+        return messages[id];
+    }
 
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
-
-        emit Withdrawal(address(this).balance, block.timestamp);
-
-        owner.transfer(address(this).balance);
+    function tokenURI(
+        uint256 tokenId
+    ) public view override returns (string memory) {
+        return
+            string(
+                abi.encodePacked(
+                    "data:application/json;base64,",
+                    Base64.encode(
+                        bytes(
+                            string(
+                                abi.encodePacked(
+                                    '{"name": "',
+                                    "Epitath Message",
+                                    '", "image":"',
+                                    " ",
+                                    '", "description":"',
+                                    messages[tokenId],
+                                    '"}'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
     }
 }

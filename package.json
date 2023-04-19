@@ -30,6 +30,7 @@
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.3",
     "solid-js": "^1.6.10",
     "three": "^0.151.3"
   }
